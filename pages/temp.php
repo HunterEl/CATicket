@@ -7,8 +7,8 @@
 	// 	header ('Location: ' . $url);
 	// }require_once("config/db_config.php");
 
-	require_once("classes/Connect.php");
-	require_once("config/db_config.php");
+	require_once("../classes/Connect.php");
+	require_once("../config/db_config.php");
 
 	session_start();
 	$connector = new Connect();

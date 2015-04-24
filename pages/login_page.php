@@ -1,5 +1,5 @@
 
-<form method="POST" action="temp.php">
+<form method="POST" action="../temp.php">
 	<p class='t18' style='text-align:left;'>Enter Username:
 	<input id='username' class='textBox' type='text' name="username"><br>
 
