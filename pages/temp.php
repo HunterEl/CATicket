@@ -21,7 +21,7 @@
 
 	// if (isset($_POST['register'])) {
 	// 	header ('Location: http://localhost/~Jieyang/transportation/register_control.php');
-	}
+	//}
 
 	if (isset($_POST['logout'])) {
 		$connector->logout();
