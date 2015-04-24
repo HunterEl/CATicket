@@ -1,0 +1,43 @@
+.textBox{
+	border: 1px solid #d1c7ac;
+	width: 375px;
+	color: #333333;
+	padding: 5px;
+	font-family: tahoma, arial, sans-serif;
+}
+
+.t10 {
+	font-size: 10px;
+}
+
+.t12 {
+	font-size: 12px;
+}
+
+.t14 {
+	font-size: 14px;
+}
+
+.t16 {
+	font-size: 16px;
+}
+
+.t18 {
+	font-size: 18px;
+}
+
+.t20 {
+	font-size: 20px;
+}
+
+.t22 {
+	font-size: 22px;
+}
+
+.t24 {
+	font-size: 24px;
+}
+
+.t26 {
+	font-size: 26px;
+}
