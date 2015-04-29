@@ -10,40 +10,47 @@
 		}
 
 		function login($usr, $pwd) {
-			if (empty($_POST['username'])) {
+
+			if (empty($_GET['username'])) {
 				$this->errors[] = "Username field is empty!";
 			}
-			if (empty($_POST['password'])) {
+			if (empty($_GET['password'])) {
 				$this->errors[] = "Password field is empty!";
 			}
 			else {
+
 				// Create connection to database
-				$this->db_connection = new mysqli(HOST_NAME,USERNAME,PASSWORD,DB_NAME);
-
+	$db = new mysqli('localhost','peacockjs','joejose1997','admin');
 				// Prevent injection
-				$username = $this->db_connection->real_escape_string($usr);
-				$password = $this->db_connection->real_escape_string($pwd);
+				$username = $db->real_escape_string($usr);
+				$password = $db->real_escape_string($pwd);
 
-				if (!$this->db_connection->connect_errno) {
+				if (!$db->connect_errno) {
+				echo "pre-query";
 
 					 $sql = "SELECT Email, password
                         FROM SysAdmin
                         WHERE Email = '" . $username . "';";
 
-                    $query_result = $this->db_connection->query($sql);
-
+                    $query_result = $db->query($sql);
+			echo "got result";
                     if ($query_result->num_rows == 1) {
-                    	$row = $query_result->fetch_object();
-                    	if (password_verify($password, $row->password)) {
-                    		$_SESSION['username'] = $row->username;
+                    	$row = $query_result->fetch_assoc();
+			echo "<b/>".$row['password']."  ".$row['Email'];
+                    	if ($password ==  $row['password'] && 
+                    		$username == $row['Email'])
+{
 							$_SESSION['login_status'] = 1;
+			echo "session login status == 1";
                     	}
              			else {
              				$this->errors[] = "Wrong Password!";
+					echo "wrong password";
              			}
                     }
                     else {
                     	$this->errors[] = "Username does not exist.";
+			echo "wrong username";
                     }
 				}
 			}	
@@ -56,6 +63,7 @@
 		}
 
 		function loggedIn() {
+			echo "<br/> loggedIn()";
 			if ($_SESSION['login_status'] == 1) {
 				return True;
 			}

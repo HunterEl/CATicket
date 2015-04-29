@@ -1,39 +1,42 @@
 <?php
-	
-	/**
-	*/
-	// if (!isset($_SERVER['https']) || !$_SERVER['https']) {
-	// 	$url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-	// 	header ('Location: ' . $url);
-	// }require_once("config/db_config.php");
+	error_reporting(E_ALL);
+	ob_start();	
+	session_save_path('../sessions');
+	session_start(); //taint
+	echo "after start";
 
+	ini_set('session.gc_probability', 1);
+	echo " after ini set";
 	require_once("../classes/Connect.php");
+	echo "checking for first req";
 	require_once("../config/db_config.php");
-
-	session_start();
+        echo "even more before";
+	echo "before";
+	echo "butts";
+	echo "dicks";
 	$connector = new Connect();
-
-	if (isset($_POST['login'])) {
-		$username = $_POST['username'];
-		$password = $_POST['password'];
+	echo "hey";
+	if (isset($_GET['login'])) {
+		echo "hey2";
+		$username = $_GET['username'];
+		$password = $_GET['password'];
 		$connector->login($username, $password);
+	echo "nope";
 	}
 
-	// if (isset($_POST['register'])) {
-	// 	header ('Location: http://localhost/~Jieyang/transportation/register_control.php');
-	//}
+	
 
-	if (isset($_POST['logout'])) {
+	if (isset($_GET['logout'])) {
 		$connector->logout();
 	}	
 
 	if($connector->loggedIn() == True){
-		header ("Location: pages/loggedin_page.php");
+		header ("Location: loggedin_page.php");
 		
 	}
 	else {
-		include ("pages/login_page.php");
-
+		include ("login_page.php");
+		echo "login failed";
 		if($connector->errors) {
 				foreach ($connector->errors as $error) {
 					echo $error . "\n";
