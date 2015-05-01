@@ -51,7 +51,8 @@ $query = "insert into CAccounts Values ('".$AID."', '".$CID."', '".$CID."', '".$
 $db->query($query);
 $query = "insert into Contact values (".$AID.", ".$CID.");";
 $db->query($query);
-
+//we should probably add a check to make sure there were no conflicts updating the db and then route to the next page accordingly
+header("Location: success.php"); 
 
 ?>
 
