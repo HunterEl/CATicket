@@ -26,37 +26,37 @@
       <div class="row center">
        <div class="row">
 
-    <form class="col s12" action="ticket.php" method="post">
+    <form class="col s12" action="added.php" method="get">
 
       <div class="row">
         <div class="input-field col s6">
-          <input id="site_name" type="text" class="validate">
+          <input id="site_name" type="text" class="validate" name="site-name">
           <label for="site_name">Site Name</label>
         </div>
         <div class="input-field col s6">
-          <input id="location" type="text" class="validate">
+          <input id="location" type="text" class="validate" name="location">
           <label for="location">Location</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea"></textarea>
+          <textarea id="comments" class="materialize-textarea" name="comments"></textarea>
           <label for="textarea1">Comments</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="contact_name" type="text" class="validate">
+          <input id="contact_name" type="text" class="validate" name="contact_name">
           <label for="contact_name">Contact Name</label>
         </div>
         <div class="input-field col s6">
-          <input id="phone" type="text" class="validate">
+          <input id="phone" type="text" class="validate" name="phone">
           <label for="phone">Contact Number</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
+          <input id="email" type="email" class="validate" name="email">
           <label for="email">Email</label>
         </div>
       </div>
