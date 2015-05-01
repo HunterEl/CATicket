@@ -51,9 +51,11 @@ $query = "insert into CAccounts Values ('".$AID."', '".$CID."', '".$CID."', '".$
 $db->query($query);
 $query = "insert into Contact values (".$AID.", ".$CID.");";
 $db->query($query);
+
+mysqli_close(db); //close the opened db connection
 //we should probably add a check to make sure there were no conflicts updating the db and then route to the next page accordingly
 header("Location: success.php"); 
-
+exit; // just to make sure the header redirects and then we GTFO
 ?>
 
 
