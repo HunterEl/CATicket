@@ -47,7 +47,7 @@ $result->free();
 //defaulting such that the initial contact is manager and admin. This can be changed.
 $query = "insert into User_Contact Values ('".$CID."', '".$contact_name."', '".$email."', '".$phone."' ,1 ,1 ,1 );";
 $db->query($query);
-$query = "insert into CAccounts Values ('".$AID."', '".$CID."', '".$CID."', '".$site_name."', '".$location."', 'Pending');";
+$query = "insert into CAccounts Values ('".$AID."', '".$CID."', '".$CID."', '".$site_name."', 'Pending');";
 $db->query($query);
 $query = "insert into Contact values (".$AID.", ".$CID.");";
 $db->query($query);
