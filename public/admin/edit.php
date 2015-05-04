@@ -18,10 +18,10 @@ table tr:nth-child(even) {
 <?php
 
 if (isset($_GET['id'])) 
-	{ $ID=$db->real_escape_string(trim($_GET['id'])); }
+	{ $ID=(trim($_GET['id'])); }
 else 
 	{ $ID = ''; }
-
+$data_url = "editable.php?id=".$ID;
 $update_url = "update.php?id=".$ID;
 $np_url = "new_person.php?id=".$ID;
 
@@ -76,7 +76,7 @@ $np_url = "new_person.php?id=".$ID;
 <script>
 var app = angular.module('myApp', []);
 app.controller('customersCtrl', function($scope, $http) {
-   $http.get("editable.php")
+   $http.get(<?php echo $data_url; ?>)
    .success(function (response) {$scope.names = response.records;});
 });
 </script>

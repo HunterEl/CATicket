@@ -10,13 +10,16 @@ if ($conn->connect_error) {
 }
 
 $param = $_GET['id'];
+$query = "SELECT cName, Email, Phone, Contact, UC.Admin, UC.Manager, O_Name, Location, status FROM User_Contact AS UC, CAccounts AS CA WHERE CID = ".$param." AND ID =".$param.";";
 
-$result = $conn->query("SELECT cName, Email, Phone, Contact, UC.Admin, UC.Manager, O_Name, Location, status FROM User_Contact AS UC, CAccounts AS CA WHERE CID = "$param" AND ID ="$param" ");
+$result = $conn->query($query);
 
 $outp = ""; 
 
+echo $query;
 
-while($rs = $result->fetch_array(MYSQLI_ASSOC)){
+for($i = 0; $i < $result->num_rows; $i++) {
+	$rs = $result->fetch_assoc();
 	if ($outp != "") {$outp .= ",";}
 	$outp .= '{"cName":"'  . $rs["cName"] . '",';
     $outp .= '"Email":"'   . $rs["Email"]. '",';
