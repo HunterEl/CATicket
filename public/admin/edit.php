@@ -48,11 +48,11 @@ $np_url = "new_person.php?id=".$ID;
 <label for="query">Phone:</label>
 <input type="text" class="form-control" name="phone" value="{{ x.Phone }}">
 <label for="query">Assign Admin:</label>
-<input type="text" class="form-control" name="admin" {{x.Admin ? checked : unchecked}}>
+<input type="checkbox" class="form-control" name="admin" {{x.Admin ? checked : unchecked}}>
 <label for="query">Assign Manager:</label>
-<input type="text" class="form-control" name="Manager" {{x.Manager ? checked : unchecked}}>
+<input type="checkbox" class="form-control" name="Manager" {{x.Manager ? checked : unchecked}}>
 <label for="query">Assign Contact:</label>
-<input type="text" class="form-control" name="Contact" {{x.Contact ? checked : unchecked}}>
+<input type="checkbox" class="form-control" name="Contact" {{x.Contact ? checked : unchecked}}>
 </div>
 </form>
 <form method="GET" action=<?php echo $np_url; ?>>
