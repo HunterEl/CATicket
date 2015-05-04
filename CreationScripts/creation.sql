@@ -3,6 +3,7 @@ CREATE TABLE `CAccounts` (
   `Admin` int(11) NOT NULL,
   `Manager` int(11) NOT NULL,
   `O_Name` varchar(40) NOT NULL,
+  `Location` varchar(40) NOT NULL,
   `status` varchar(31) NOT NULL DEFAULT 'Pending',
   PRIMARY KEY (`ID`),
   KEY `Admin` (`Admin`),
@@ -26,3 +27,12 @@ CREATE TABLE `Contact` (
   PRIMARY KEY (`AID`,`CID`),
   KEY `CID` (`CID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `SysAdmin` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `CanEdit` tinyint(1) DEFAULT '0',
+  `Email` varchar(60) NOT NULL,
+  `Password` varchar(40) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+SELECT * FROM admin.Contact;

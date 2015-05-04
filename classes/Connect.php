@@ -40,7 +40,8 @@
                     	if ($password ==  $row['password'] && 
                     		$username == $row['Email'])
 {
-							$_SESSION['login_status'] = 1;
+							$_SESSION['login_status'] = 1;	
+							$_SESSION['username'] = $row['Email']; //added by hunter on 5/3/15
 			echo "session login status == 1";
                     	}
              			else {
