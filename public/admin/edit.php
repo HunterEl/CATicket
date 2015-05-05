@@ -18,8 +18,8 @@ $update_url = "update.php?id=".$ID;
 $np_url = "new_person.php?id=".$ID;
 
 $q1 = "select * from CAccounts where id=".$ID.";";
-$res1 = $db->query($res1);
-$row1 = $res->fetch_assoc();
+$res1 = $db->query($q1);
+$row1 = $res1->fetch_assoc();
 
 
 
@@ -35,25 +35,25 @@ $row1 = $res->fetch_assoc();
     <label for="query">Location:</label>
 <input type="text" class="form-control" name="Loc" value="<?php echo $row1['Location']; ?>"></br>
     <label for="query">Status:</label>
-<input type="text" class="form-control" name="Stat" value="<?php echo $row1['Status']; ?>"></br>
+<input type="text" class="form-control" name="Stat" value="<?php echo $row1['status']; ?>"></br>
 </br></br>
 <?php 
 
 $q2 = "select * from User_Contact where (User_Contact.cid = ".$row1['Admin']." or User_Contact.cid = ".$row1['Manager']." or User_Contact.cid in (select CID from Contact where AID = ".$row1['ID']."));";
 $res2 = $db->query($q2);
-for (int $i=0;$i<$res2->num_rows;$i++)
+for ($i=0;$i<$res2->num_rows;$i++)
 {
 	$row2 = $res2->fetch_assoc();
 	$admin = '';
 	$man = '';
 	$contact = '';
-	if ($row2['Admin'] == 1) $admin='checked';
-	if ($row2['Manager'] == 1) man='checked';
-	if ($row2['Contact'] == 1) $contact='checked';
+	if ($row2['Admin'] == 1) { $admin='checked'; }
+	if ($row2['Manager'] == 1) { $man='checked'; }
+	if ($row2['Contact'] == 1) { $contact='checked'; }
 
 echo "
 <label for='query'>Name:</label>
-<input type='text' class='form-control' name='name' value='".$row2['Name']."'>
+<input type='text' class='form-control' name='name' value='".$row2['cName']."'>
 <label for='query'>Email:</label>
 <input type='text' class='form-control' name='email' value='".$row2['Email']."'>
 <label for='query'>Phone:</label>
@@ -65,9 +65,10 @@ echo "
 <label for='query'>Assign Contact:</label>
 <input type='checkbox' class='form-control' name='Contact' ".$contact.">
 </form>
-<h4>Caution! Each organization can only have one Admin and one Manager. Do not add a new Admin or Manager without removing the old one</h4>
-"
+
+";
 }
+echo "<h4>Caution! Each organization can only have one Admin and one Manager. Do not add a new Admin or Manager without removing the old one</h4>";
 ?>
 
 <form method="GET" action=<?php echo $np_url; ?>>
