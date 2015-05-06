@@ -65,7 +65,7 @@ if ($con == true)
 	$db->query($uq);
 }
 
-
 header ("Location: view.php?id=".$id);
+
 
 ?>
