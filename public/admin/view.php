@@ -63,17 +63,17 @@ for ($i=0;$i<$res2->num_rows;$i++)
 
 echo "
 <label for='query'>Name:</label>
-<input type='text' class='form-control' name='name".$i."' value='".$row2['cName']."'>
+<input type='text' class='form-control' name='name".$i."' value='".$row2['cName']."' readonly>
 <label for='query'>Email:</label>
-<input type='text' class='form-control' name='email".$i."' value='".$row2['Email']."'>
+<input type='text' class='form-control' name='email".$i."' value='".$row2['Email']."' readonly>
 <label for='query'>Phone:</label>
-<input type='text' class='form-control' name='phone".$i."' value='".$row2['Phone']."'>
+<input type='text' class='form-control' name='phone".$i."' value='".$row2['Phone']."' readonly>
 <label for='query'>Assign Admin:</label>
-<input type='checkbox' class='form-control' name='admin".$i."' ".$admin.">
+<input type='checkbox' class='form-control' name='admin".$i."' ".$admin." disabled>
 <label for='query'>Assign Manager:</label>
-<input type='checkbox' class='form-control' name='Manager".$i."' ".$man.">
+<input type='checkbox' class='form-control' name='Manager".$i."' ".$man." disabled>
 <label for='query'>Assign Contact:</label>
-<input type='checkbox' class='form-control' name='Contact".$i."' ".$contact.">
+<input type='checkbox' class='form-control' name='Contact".$i."' ".$contact." disabled>
 </br>
 
 ";

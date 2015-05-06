@@ -68,7 +68,7 @@ echo "
 </br>
 ";
 }
-echo "<input type='hidden' class='form-control' name='id' value='<?php echo $ID; ?>' >";
+echo "<input type='hidden' class='form-control' name='id' value=".$ID." >";
 
 echo "<button type='submit'>Submit Modifications</button></form>";
 echo "<button><a href=".$view_url.">Back to View</a></button>";
