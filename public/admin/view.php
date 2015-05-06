@@ -64,7 +64,7 @@ echo "
 <input type='checkbox' class='form-control' name='Manager' ".$man." disabled>
 <label for='query'>Assign Contact:</label>
 <input type='checkbox' class='form-control' name='Contact' ".$contact." disabled>
-
+</br>
 
 ";
 }
@@ -87,6 +87,8 @@ echo "</br></br></br><h2> Add a new associated contact</h2>";
 <input type="checkbox" class="form-control" name="Manager">
 <label for="query">Assign Contact:</label>
 <input type="checkbox" class="form-control" name="Contact">
+<input type="hidden" class="form-control" name="id" value="<?php echo $ID; ?>" >
+
 <button type='submit'>Submit</button>
 </form>
 

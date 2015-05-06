@@ -3,7 +3,7 @@
 
 
 <?php
-
+//error_reporting(-1);
 $db = new mysqli('localhost', 'peacockjs', 'joejose1997', 'admin');
 if (mysqli_connect_errno()) {
 	echo 'Error: Could not connect';
@@ -65,9 +65,10 @@ echo "
 <input type='checkbox' class='form-control' name='Manager' ".$man.">
 <label for='query'>Assign Contact:</label>
 <input type='checkbox' class='form-control' name='Contact' ".$contact.">
+</br>
 ";
 }
-echo "<label for="query">ID</label><input type='hidden' class='form-control' name='id' value='<?php echo $ID; ?>' >";
+echo "<input type='hidden' class='form-control' name='id' value='<?php echo $ID; ?>' >";
 
 echo "<button type='submit'>Submit Modifications</button></form>";
 echo "<button><a href=".$view_url.">Back to View</a></button>";
@@ -87,7 +88,7 @@ echo "<h4>Caution! Each organization can only have one Admin and one Manager. Do
 <input type="checkbox" class="form-control" name="Manager">
 <label for="query">Assign Contact:</label>
 <input type="checkbox" class="form-control" name="Contact">
-<label for="query">ID</label>
+
 <input type="hidden" class="form-control" name="id" value="<?php echo $ID; ?>" >
 <button type='submit'>Submit</button>
 </form>
