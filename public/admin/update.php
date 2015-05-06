@@ -3,6 +3,8 @@
 
 
 <?php
+//update.php?O_Name=Boom&Loc=shaka+laka&Stat=pending&name0=d&email0=f%40b.c&phone0=e&admin0=on&Manager0=on&Contact0=on&id=0
+//?O_Name=Boom&Loc=shaka&Stat=laka&name0=donald&email0=f%40b.c&phone0=e&admin0=on&Manager0=on&Contact0=on&id=0
 $db = new mysqli('localhost', 'peacockjs', 'joejose1997', 'admin');
 if (mysqli_connect_errno()) {
 	echo 'Error: Could not connect';
@@ -25,46 +27,47 @@ if (isset($_GET['Stat']))
 else 
 	{ $stat = ''; }
 
-
 $q1 = "select * from CAccounts where id=".$ID.";";
 $res1 = $db->query($q1);
 $row1 = $res1->fetch_assoc();
 
-$uq = "update CAccounts set O_Name='".$O_N."', Location='".$Loc."', Status='".$Stat."' where ID = ".$ID.";";
-
-
+$uq = "update CAccounts set O_Name='".$O_N."', Location='".$loc."', Status='".$stat."' where ID = ".$ID.";";
+$db->query($uq);
+echo $uq."</br>";
 $q2 = "select * from User_Contact where (User_Contact.cid = ".$row1['Admin']." or User_Contact.cid = ".$row1['Manager']." or User_Contact.cid in (select CID from Contact where AID = ".$row1['ID']."));";
 $res2 = $db->query($q2);
 for ($i=0;$i<$res2->num_rows;$i++)
 {
 	$row2 = $res2->fetch_assoc();
-if (isset($_GET['name'.$i])) 
+if (isset($_GET["name".$i])) 
 	{ $name=$db->real_escape_string(trim($_GET['name'.$i])); }
 else 
 	{ $name = ''; }
-if (isset($_GET['email'.$i])) 
+if (isset($_GET["email".$i])) 
 	{ $email=$db->real_escape_string(trim($_GET['email'.$i])); }
 else 
 	{ $email = ''; }
-if (isset($_GET['phone'.$i])) 
+if (isset($_GET["phone".$i])) 
 	{ $phone=$db->real_escape_string(trim($_GET['phone'.$i])); }
 else 
 	{ $phone = ''; }
-if (isset($_GET['admin'.$i])) 
+if (isset($_GET["admin".$i])) 
 	{ $admin=true; }
 else 
 	{ $admin = false; }
-if (isset($_GET['Manager'.$i])) 
+if (isset($_GET["Manager".$i])) 
 	{ $man=true; }
 else 
 	{ $man = false; }
-if (isset($_GET['Contact'.$i])) 
+if (isset($_GET["Contact".$i])) 
 	{ $con=true; }
 else 
 	{ $con=false; }
 
-$uq = "update User_Contact set cName = '".$name."', Email = '".$email."', Phone = '".$phone."', Admin = '".$admin."', Manager = '".$man."', Contact = '".$con."' where CID = ".$row2['CID'].");";
+$uq = "update User_Contact set cName = '".$name."', Email = '".$email."', Phone = '".$phone."', Admin = '".$admin."', Manager = '".$man."', Contact = '".$con."' where CID = ".$row2['CID'].";";
+echo $uq."</br>";
 
+$db->query($uq);
 if ($admin== true)
 {
 	$uq = "update CAccounts set Admin = ".$row2['CID']." where ID = ".$ID.";";
@@ -82,10 +85,11 @@ if ($con == true)
 }
 
 }
+$res1->free();
+$res2->free();
 
 
-
-header ("Location: view.php?id=".$id);
+//header ("Location: view.php?id=".$ID);
 
 
 ?>
