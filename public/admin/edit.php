@@ -30,7 +30,7 @@ $row1 = $res1->fetch_assoc();
  
 <div ng-app="myApp" ng-controller="customersCtrl">
 
-<form method="GET" action=<?php echo $update_url; ?>>
+<form method="GET" action=<?php echo $update_url; ?> onsubmit="if(!confirm('Each Ticket can only have ONE Admin and ONE Manager. If you choose to create a new Admin or Manager they will overwrite the one one. Are you sure you want to submit?')){return false;}">
 <label for="query">Organization Name:</label>
     <input type="text" class="form-control" name="O_Name" value="<?php echo $row1['O_Name']; ?>"></br>
     <label for="query">Location:</label>
@@ -54,17 +54,17 @@ for ($i=0;$i<$res2->num_rows;$i++)
 
 echo "
 <label for='query'>Name:</label>
-<input type='text' class='form-control' name='name' value='".$row2['cName']."'>
+<input type='text' class='form-control' name='name".$i."' value='".$row2['cName']."'>
 <label for='query'>Email:</label>
-<input type='text' class='form-control' name='email' value='".$row2['Email']."'>
+<input type='text' class='form-control' name='email".$i."' value='".$row2['Email']."'>
 <label for='query'>Phone:</label>
-<input type='text' class='form-control' name='phone' value='".$row2['Phone']."'>
+<input type='text' class='form-control' name='phone".$i."' value='".$row2['Phone']."'>
 <label for='query'>Assign Admin:</label>
-<input type='checkbox' class='form-control' name='admin' ".$admin.">
+<input type='checkbox' class='form-control' name='admin".$i."' ".$admin.">
 <label for='query'>Assign Manager:</label>
-<input type='checkbox' class='form-control' name='Manager' ".$man.">
+<input type='checkbox' class='form-control' name='Manager".$i."' ".$man.">
 <label for='query'>Assign Contact:</label>
-<input type='checkbox' class='form-control' name='Contact' ".$contact.">
+<input type='checkbox' class='form-control' name='Contact".$i."' ".$contact.">
 </br>
 ";
 }
@@ -89,7 +89,7 @@ echo "<h4>Caution! Each organization can only have one Admin and one Manager. Do
 <label for="query">Assign Contact:</label>
 <input type="checkbox" class="form-control" name="Contact">
 
-<input type="hidden" class="form-control" name="id" value="<?php echo $ID; ?>" >
+<input type="hidden" class="form-control" name="id" value=<?php echo $ID; ?> >
 <button type='submit'>Submit</button>
 </form>
 

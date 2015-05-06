@@ -6,8 +6,16 @@ if (mysqli_connect_errno()) {
 	exit;
 }
 
- //temp variable for the form variable about the id
- $companyID = 5;
+if (isset($_GET['id'])) 
+	{ $ID=$db->real_escape_string(trim($_GET['id'])); }
+else 
+	{ $ID = ''; }
+
+$q1 = "select * from CAccounts where id=".$ID.";";
+$res1 = $db->query($q1);
+$row1 = $res1->fetch_assoc();
+
+
 
 //get the get variables from the url, sanitize them, and handle optional paramaters
 if (isset($_GET['O_Name'])) 
