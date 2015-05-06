@@ -3,7 +3,7 @@
 
 
 <?php
-
+//error_reporting(-1);
 $db = new mysqli('localhost', 'peacockjs', 'joejose1997', 'admin');
 if (mysqli_connect_errno()) {
 	echo 'Error: Could not connect';
@@ -16,6 +16,7 @@ else
 	{ $ID = ''; }
 $update_url = "update.php?id=".$ID;
 $np_url = "new_person.php?id=".$ID;
+$view_url = "view.php?id=".$ID;
 
 $q1 = "select * from CAccounts where id=".$ID.";";
 $res1 = $db->query($q1);
@@ -64,12 +65,13 @@ echo "
 <input type='checkbox' class='form-control' name='Manager' ".$man.">
 <label for='query'>Assign Contact:</label>
 <input type='checkbox' class='form-control' name='Contact' ".$contact.">
-
-
+</br>
 ";
 }
-echo "<button type='submit'>Submit Modifications</button></form>";
+echo "<input type='hidden' class='form-control' name='id' value='<?php echo $ID; ?>' >";
 
+echo "<button type='submit'>Submit Modifications</button></form>";
+echo "<button><a href=".$view_url.">Back to View</a></button>";
 echo "<h4>Caution! Each organization can only have one Admin and one Manager. Do not add a new Admin or Manager without removing the old one</h4>";
 ?>
 
@@ -81,11 +83,13 @@ echo "<h4>Caution! Each organization can only have one Admin and one Manager. Do
 <label for="query">Phone:</label>
 <input type="text" class="form-control" name="phone">
 <label for="query">Assign Admin:</label>
-<input type="text" class="form-control" name="admin" >
+<input type="checkbox" class="form-control" name="admin" >
 <label for="query">Assign Manager:</label>
-<input type="text" class="form-control" name="Manager">
+<input type="checkbox" class="form-control" name="Manager">
 <label for="query">Assign Contact:</label>
-<input type="text" class="form-control" name="Contact">
+<input type="checkbox" class="form-control" name="Contact">
+
+<input type="hidden" class="form-control" name="id" value="<?php echo $ID; ?>" >
 <button type='submit'>Submit</button>
 </form>
 
